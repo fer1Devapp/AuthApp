@@ -1,25 +1,32 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { useAuth } from '../context/AunthContext'
+import { Ionicons } from '@expo/vector-icons'
 
 export default function HomeScreen() {
   const {usuario, logout} = useAuth()
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Bienvenido</Text>
-      <Text style={styles.nombre}>
+      <View style={styles.iconContainer}>
+        <Ionicons name='home' size={80} color="#e94560"/>
+      </View>
+      <Text style={styles.titulo}>AuthApp</Text>
+
+      <View>
+        <Ionicons
+        name='person-circle'
+         size={50} 
+         color="rgba(71, 17, 125, 0.6)"
+         style={styles.icon} />
+
+        <Text style={styles.nombre}>
         {usuario?.nombre}
       </Text>
-
-      <TouchableOpacity
-        style={styles.boton}
-        onPress={logout}
-      >
-      <Text style={styles.botonTexto}>
-        Cerrar Sesion
-      </Text>
-
-      </TouchableOpacity>
+      </View>
+      
+      <TouchableOpacity onPress={logout}>
+  <Ionicons name="log-out-outline" size={70} color="#e94560" />
+</TouchableOpacity>
     </View>
   )
 }
@@ -28,7 +35,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor:'#1a1a2e'
   },
   titulo: {
     fontSize: 30,
@@ -48,5 +56,15 @@ const styles = StyleSheet.create({
   botonTexto: {
     color: '#fff',
     fontWeight: 'bold'
-  }
+  },
+
+  icon: {  
+  marginRight: 10,  
+},
+
+  iconContainer: {
+  alignItems: 'center',
+  width: '100%',
+  marginBottom: 20
+}
 })

@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, TextInput, Alert, TouchableOpacity } from 'react-native'
 import { useAuth } from '../context/AunthContext'
 import { useState } from 'react'
+import { Ionicons } from '@expo/vector-icons'
 
 export default function RegisterScreen({ navigation }: any) {
   const [email, setEmail] = useState('')
@@ -22,17 +23,37 @@ export default function RegisterScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
+      <View style={styles.iconContainer}>
+        <Ionicons name='person-add' size={ 70 } color= "#e94560"/>
+      </View>
       <Text style={styles.titulo}>Crear cuenta</Text>
       <Text style={styles.subtitulo}>Regístrate para continuar</Text>
+      
+      <View style={styles.inputContainer}>
+        <Ionicons 
+        name='person-add-outline'
+        size={20}
+        color="#7689"
+        style={styles.icon} />
 
-      <TextInput
+        <TextInput
         style={styles.input}
         placeholder="Nombre"
         placeholderTextColor="#a0a0b0"
         value={nombre}
         onChangeText={setNombre}
       />
-      <TextInput
+      </View>
+      
+      <View style={styles.inputContainer}>
+        
+        <Ionicons
+        name='mail-outline'
+        size={20}
+        color="#7689"
+        style={styles.icon} />
+        
+        <TextInput
         style={styles.input}
         placeholder="Correo electrónico"
         placeholderTextColor="#a0a0b0"
@@ -41,7 +62,18 @@ export default function RegisterScreen({ navigation }: any) {
         value={email}
         onChangeText={setEmail}
       />
-      <TextInput
+      </View>
+      
+      <View style={styles.inputContainer}>
+
+        <Ionicons
+        name='key-outline'
+        size={20}
+        color="#7689"
+        style={styles.icon} />
+
+
+        <TextInput
         style={styles.input}
         placeholder="Password"
         placeholderTextColor="#a0a0b0"
@@ -49,6 +81,8 @@ export default function RegisterScreen({ navigation }: any) {
         value={password}
         onChangeText={setPassword}
       />
+
+      </View>      
 
       <TouchableOpacity style={styles.boton} onPress={handleRegister}>
         <Text style={styles.botonTexto}>Crear cuenta</Text>
@@ -72,12 +106,14 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     color: '#ffffff',
-    marginBottom: 8
+    marginBottom: 8,
+    textAlign: 'center'
   },
   subtitulo: {
     fontSize: 16,
     color: '#a0a0b0',
-    marginBottom: 40
+    marginBottom: 40,
+    textAlign: 'center'
   },
   input: {
     backgroundColor: '#0f3460',
@@ -103,5 +139,23 @@ const styles = StyleSheet.create({
     color: '#a0a0b0',
     textAlign: 'center',
     fontSize: 14
-  }
+  },
+
+  inputContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: '#0f3460',
+  borderRadius: 10,
+  paddingHorizontal: 15,
+  marginBottom: 15,
+},
+
+icon: {  
+  marginRight: 10,  
+},
+iconContainer: {
+  alignItems: 'center',
+  width: '100%',
+  marginBottom: 20
+}
 })

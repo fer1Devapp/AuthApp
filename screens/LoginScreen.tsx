@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { View, Text, TextInput, 
          TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import { useAuth } from '../context/AunthContext'
+import { Ionicons } from '@expo/vector-icons'
 
 export default function LoginScreen({ navigation }: any) {
   const [email, setEmail] = useState('')
@@ -23,11 +24,22 @@ export default function LoginScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Bienvenido</Text>
+      <View style={styles.iconContainer}>
+        <Ionicons name="lock-closed" size={ 100 } color="#e94560"/>
+      </View>      
+      <Text style={styles.titulo} >AuthApp</Text>
       <Text style={styles.subtitulo}>Inicia sesión para continuar</Text>
 
-      <TextInput
-        style={styles.input}
+      <View style={styles.inputContainer}>
+        <Ionicons 
+        name='mail' 
+        size={35} 
+        color="#7fb5d6"        
+        style={styles.icon}
+        />
+        
+        <TextInput
+        style={styles.input}        
         placeholder="Email"
         placeholderTextColor="#a0a0b0"
         value={email}
@@ -36,8 +48,17 @@ export default function LoginScreen({ navigation }: any) {
         autoCapitalize="none"
       />
 
-      <TextInput
-        style={styles.input}
+      </View>
+      
+      <View style={styles.inputContainer}>
+        <Ionicons 
+        name='key-outline' 
+        size={35} 
+        color="#7fb5d6"
+        style={styles.icon}
+        />
+        <TextInput        
+        style={styles.input}      
         placeholder="Password"
         placeholderTextColor="#a0a0b0"
         value={password}
@@ -45,6 +66,8 @@ export default function LoginScreen({ navigation }: any) {
         secureTextEntry
       />
 
+      </View>
+      
       <TouchableOpacity style={styles.boton} onPress={handleLogin}>
         <Text style={styles.botonTexto}>Iniciar sesión</Text>
       </TouchableOpacity>
@@ -65,12 +88,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#1a1a2e'
   },
   titulo: {
+    textAlign: 'center',
     fontSize: 32,
     fontWeight: 'bold',
     color: '#ffffff',
     marginBottom: 8
   },
   subtitulo: {
+    textAlign: 'center',
     fontSize: 16,
     color: '#a0a0b0',
     marginBottom: 40
@@ -78,7 +103,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#0f3460',
     color: '#ffffff',
-    padding: 15,
+    paddingVertical: 15,
     borderRadius: 10,
     fontSize: 16,
     marginBottom: 15
@@ -99,5 +124,23 @@ const styles = StyleSheet.create({
     color: '#a0a0b0',
     textAlign: 'center',
     fontSize: 14
-  }
+  },
+  inputContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: '#0f3460',
+  borderRadius: 10,
+  paddingHorizontal: 15,
+  marginBottom: 15,
+},
+
+icon: {  
+  marginRight: 10,  
+},
+iconContainer: {
+  alignItems: 'center',
+  width: '100%',
+  marginBottom: 20
+}
+
 })
