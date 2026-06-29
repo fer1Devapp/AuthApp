@@ -1,9 +1,11 @@
-# TravelAlone 🔐
+# AuthApp 🔐
 
 App con autenticación completa construida con React Native y Expo.
 
 ## Screenshots
-<!-- tus imágenes aquí -->
+![AuthApp Login](https://raw.githubusercontent.com/fer1Devapp/AuthApp/main/Login.png)
+![AuthApp Register](https://raw.githubusercontent.com/fer1Devapp/AuthApp/main/Register.png)
+![AuthApp Home](https://raw.githubusercontent.com/fer1Devapp/AuthApp/main/Home.png)
 
 ## Funcionalidades
 - 🔑 Login con validación
